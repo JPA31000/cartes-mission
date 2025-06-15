@@ -4,6 +4,11 @@ let dragged = null;
 
 cards.forEach(card => {
   card.addEventListener('dragstart', () => {
+    // remove filled class from previous slot if dragging from one
+    const parent = card.parentElement;
+    if (parent && parent.classList.contains('slot')) {
+      parent.classList.remove('filled');
+    }
     dragged = card;
     setTimeout(() => card.style.opacity = '0.5', 0);
   });
