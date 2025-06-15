@@ -1,5 +1,12 @@
-const cards = document.querySelectorAll('.card');
+const cardsContainer = document.querySelector('.cards');
 const slots = document.querySelectorAll('.slot');
+
+// Shuffle cards before adding listeners
+const shuffled = Array.from(cardsContainer.children)
+  .sort(() => Math.random() - 0.5);
+shuffled.forEach(card => cardsContainer.appendChild(card));
+
+const cards = cardsContainer.querySelectorAll('.card');
 let dragged = null;
 
 cards.forEach(card => {
