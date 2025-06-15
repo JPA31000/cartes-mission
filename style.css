@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f5f5f5;
+  color: #333;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.cards, .slots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.card, .slot {
+  width: 120px;
+  height: 160px;
+  border: 2px solid #888;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+}
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: grab;
+}
+.slot {
+  background: #e0e0e0;
+  border-style: dashed;
+  cursor: default;
+}
+.slot.filled {
+  background: #fff;
+  border-style: solid;
+}
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
