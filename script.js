@@ -7,8 +7,9 @@ cards.forEach(card => {
     // remove filled class from previous slot if dragging from one
     const parent = card.parentElement;
     if (parent && parent.classList.contains('slot')) {
-      parent.classList.remove('filled');
+      parent.classList.remove('filled', 'correct', 'incorrect');
     }
+    card.classList.remove('correct', 'incorrect');
     dragged = card;
     setTimeout(() => card.style.opacity = '0.5', 0);
   });
@@ -35,9 +36,24 @@ function checkAllFilled() {
 }
 
 document.getElementById('checkBtn').addEventListener('click', () => {
-  const placed = Array.from(slots).map(slot => parseInt(slot.firstChild.dataset.order));
-  const correct = placed.every((val, idx, arr) => idx === 0 || arr[idx - 1] <= val);
-  if (correct) {
+  let success = true;
+  slots.forEach(slot => {
+    const card = slot.firstElementChild;
+    if (!card) {
+      success = false;
+      return;
+    }
+    card.classList.remove('correct', 'incorrect');
+    slot.classList.remove('correct', 'incorrect');
+    if (card.dataset.order === slot.dataset.index) {
+      card.classList.add('correct');
+    } else {
+      card.classList.add('incorrect');
+      success = false;
+    }
+  });
+
+  if (success) {
     alert('Bravo ! L\'ordre est correct.');
   } else {
     alert('L\'ordre est incorrect, veuillez réessayer.');
