@@ -39,6 +39,14 @@ h1 {
   background: #fff;
   border-style: solid;
 }
+
+.card.correct {
+  background: #c8e6c9;
+}
+
+.card.incorrect {
+  background: #ffcdd2;
+}
 button {
   display: block;
   margin: 0 auto;

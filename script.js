@@ -1,5 +1,17 @@
 const cards = document.querySelectorAll('.card');
 const slots = document.querySelectorAll('.slot');
+
+function shuffleCards() {
+  const container = document.querySelector('.cards');
+  const array = Array.from(container.children);
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  array.forEach(card => container.appendChild(card));
+}
+
+shuffleCards();
 let dragged = null;
 
 cards.forEach(card => {
@@ -9,6 +21,7 @@ cards.forEach(card => {
     if (parent && parent.classList.contains('slot')) {
       parent.classList.remove('filled');
     }
+    card.classList.remove('correct', 'incorrect');
     dragged = card;
     setTimeout(() => card.style.opacity = '0.5', 0);
   });
@@ -35,12 +48,21 @@ function checkAllFilled() {
 }
 
 document.getElementById('checkBtn').addEventListener('click', () => {
-  const placed = Array.from(slots).map(slot => parseInt(slot.firstChild.dataset.order));
-  const correct = placed.every((val, idx, arr) => idx === 0 || arr[idx - 1] <= val);
-  if (correct) {
-    alert('Bravo ! L\'ordre est correct.');
+  cards.forEach(card => card.classList.remove('correct', 'incorrect'));
+  let allCorrect = true;
+  slots.forEach((slot, idx) => {
+    const card = slot.firstChild;
+    if (parseInt(card.dataset.order) === idx + 1) {
+      card.classList.add('correct');
+    } else {
+      card.classList.add('incorrect');
+      allCorrect = false;
+    }
+  });
+  if (allCorrect) {
+    alert("Bravo ! L'ordre est correct.");
   } else {
-    alert('L\'ordre est incorrect, veuillez réessayer.');
+    alert("L'ordre est incorrect, veuillez réessayer.");
   }
 });
 

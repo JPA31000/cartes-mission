@@ -10,5 +10,6 @@ Cartes Mission est un petit jeu web de glisser-déposer. L'objectif est de place
 ## Comment jouer
 
 - Faites glisser chaque carte vers un emplacement vide pour reconstituer la chronologie.
-- Le bouton **Vérifier l'ordre** devient actif une fois toutes les cartes placées. Cliquez‑le pour savoir si la suite est correcte.
+- Les cartes sont mélangées au début de chaque partie.
+- Le bouton **Vérifier l'ordre** devient actif une fois toutes les cartes placées. Lors de la vérification, chaque carte s'affiche en vert si elle est bien placée et en rouge sinon.
 - Vous pouvez réarranger les cartes tant que le compte‑à‑rebours n'est pas terminé.
