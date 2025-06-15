@@ -59,3 +59,13 @@ button:disabled {
   text-align: center;
   margin: 10px 0;
 }
+
+.card.correct {
+  border-color: #28a745;
+  background: #e6ffe6;
+}
+
+.card.incorrect {
+  border-color: #dc3545;
+  background: #ffe6e6;
+}
