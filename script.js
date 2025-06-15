@@ -47,6 +47,7 @@ document.getElementById('checkBtn').addEventListener('click', () => {
 // Timer de jeu (2 minutes)
 let timeLeft = 120;
 const timerEl = document.getElementById('timer');
+timerEl.textContent = '02:00';
 const interval = setInterval(() => {
   if (timeLeft <= 0) {
     clearInterval(interval);

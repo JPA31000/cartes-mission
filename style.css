@@ -54,3 +54,8 @@ button:disabled {
   background: #aaa;
   cursor: not-allowed;
 }
+
+#timer {
+  text-align: center;
+  margin: 10px 0;
+}
