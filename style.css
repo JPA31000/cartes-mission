@@ -1,17 +1,17 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f5f5f5;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 30px;
+  background: #f0f0f0;
   color: #333;
 }
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .cards, .slots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 20px;
 }
 .card, .slot {
@@ -55,7 +55,18 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.slot.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.slot.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
 #timer {
   text-align: center;
   margin: 10px 0;
 }
+
