@@ -35,9 +35,19 @@ function checkAllFilled() {
 }
 
 document.getElementById('checkBtn').addEventListener('click', () => {
-  const placed = Array.from(slots).map(slot => parseInt(slot.firstChild.dataset.order));
-  const correct = placed.every((val, idx, arr) => idx === 0 || arr[idx - 1] <= val);
-  if (correct) {
+  const placed = Array.from(slots).map(slot =>
+    slot.firstChild ? parseInt(slot.firstChild.dataset.order) : null);
+  let allCorrect = true;
+  slots.forEach((slot, idx) => {
+    slot.classList.remove('correct', 'incorrect');
+    if (placed[idx] === idx + 1) {
+      slot.classList.add('correct');
+    } else {
+      slot.classList.add('incorrect');
+      allCorrect = false;
+    }
+  });
+  if (allCorrect) {
     alert('Bravo ! L\'ordre est correct.');
   } else {
     alert('L\'ordre est incorrect, veuillez réessayer.');
@@ -65,3 +75,4 @@ function disableGame() {
   cards.forEach(card => { card.draggable = false; });
   document.getElementById('checkBtn').disabled = true;
 }
+
